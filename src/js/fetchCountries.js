@@ -1,10 +1,15 @@
-export default function fetchCountries(name) {
-  return fetch(
-    `https://restcountries.com/v2/name/${name}?fields=name,capital,population,flags,languages`
-  ).then(response => {
+'use strict';
+
+const BASE_URL = 'https://restcountries.com/v3.1';
+const fields = 'fields=name,capital,population,flags,languages';
+
+function fetchCountries(countryName) {
+  return fetch(`${BASE_URL}/name/${countryName}?${fields}`).then(response => {
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(response.status);
     }
     return response.json();
   });
 }
+
+export { fetchCountries };
