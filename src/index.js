@@ -35,7 +35,8 @@ function onCountryInput(e) {
 
 function renderCountryList(countries) {
   if (countries.length > 10) {
-    clearMarkup();
+   countryInfo.innerHTML = '';
+   countryList.innerHTML = '';
 
     Notiflix.Notify.info(
       'Too many matches found. Please enter a more specific name.'
