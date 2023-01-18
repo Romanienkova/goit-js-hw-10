@@ -15,17 +15,21 @@ countryInput.addEventListener(
 
 function onCountryInput(e) {
   e.preventDefault();
-  const countryName = e.target.value.trim();
+	const countryName = e.target.value.trim();
 
-	fetchCountries(countryName)
-    .then(data => {
-      renderCountryList(data);
-    })
-    .catch(err => {
-      countryInfo.innerHTML = '';
-      countryList.innerHTML = '';
-      Notiflix.Notify.failure('Oops, there is no country with that name');
-    });
+	if (!countryName) {
+		return;
+	} else {
+		fetchCountries(countryName)
+    	.then(data => {
+      	renderCountryList(data);
+    	})
+    	.catch(err => {
+			countryInfo.innerHTML = '';
+			countryList.innerHTML = '';
+			Notiflix.Notify.failure('Oops, there is no country with that name');
+    	});
+	}
 }
 
 function renderCountryList(countries) {
