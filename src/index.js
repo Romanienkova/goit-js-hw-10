@@ -17,12 +17,7 @@ function onCountryInput(e) {
   e.preventDefault();
   const countryName = e.target.value.trim();
 
-  if (countryName === '') {
-    countryInfo.innerHTML = '';
-    countryList.innerHTML = '';
-  }
-
-  fetchCountries(countryName)
+	fetchCountries(countryName)
     .then(data => {
       renderCountryList(data);
     })
